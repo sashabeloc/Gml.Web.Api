@@ -6,21 +6,21 @@ namespace Gml.Web.Api.Core.Options
     {
         [JsonProperty(nameof(PolicyName))]
         public string PolicyName => Environment.GetEnvironmentVariable("PROJECT_POLICYNAME") 
-                                    ?? throw new Exception("Policy name not found");
+                                    ?? string.Empty;
 
         [JsonProperty(nameof(ProjectName))]
         public string ProjectName => Environment.GetEnvironmentVariable("PROJECT_NAME") 
-                                     ?? throw new Exception("Project name not found");
+                                    ?? string.Empty;
 
         [JsonProperty(nameof(SecurityKey))]
         public string SecurityKey => Environment.GetEnvironmentVariable("SECURITY_KEY") ?? string.Empty;
 
-        public string ProjectVersion => "1.1.0"; // Статическая версия, если она не зависит от переменной среды
+        public string ProjectVersion => "1.1.0"; 
 
-        public string[] SkinDomains { get; set; } = Array.Empty<string>(); // Оставляем как массив по умолчанию
+        public string[] SkinDomains { get; set; } = Array.Empty<string>();
 
         [JsonProperty(nameof(ProjectDescription))]
-        public string? ProjectDescription => Environment.GetEnvironmentVariable("PROJECT_DESCRIPTION");
+        public string? ProjectDescription => Environment.GetEnvironmentVariable("PROJECT_DESCRIPTION") ?? string.Empty;
 
         public string? ProjectPath => Environment.GetEnvironmentVariable("PROJECT_PATH") ?? string.Empty;
 
